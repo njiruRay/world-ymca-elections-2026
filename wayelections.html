@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World YMCA – 2026 Executive Committee Elections</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',Arial,sans-serif;background:#231F20;color:#231F20;overflow:hidden;height:100vh}
+:root{
+  --red:#D51A3C;--orange:#F36E52;--yellow:#F0C458;
+  --white:#FFFFFF;--grey:#E7E7E7;--black:#231F20;
+  --light:#F8F8F8;--sidebar:270px;
+}
+/* ── LAYOUT ── */
+.app{display:flex;height:100vh;overflow:hidden}
+/* ── SIDEBAR ── */
+.sidebar{
+  width:var(--sidebar);background:var(--black);
+  display:flex;flex-direction:column;overflow:hidden;flex-shrink:0;z-index:100;
+}
+.sb-header{
+  padding:20px 18px 16px;background:var(--red);flex-shrink:0;
+  border-bottom:2px solid rgba(255,255,255,.15);
+}
+.sb-world{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:2px}
+.sb-ymca{font-size:22px;font-weight:900;color:#fff;letter-spacing:1px;line-height:1}
+.sb-event{font-size:10px;color:rgba(255,255,255,.65);margin-top:6px;line-height:1.4}
+.sb-nav{flex:1;overflow-y:auto;padding:8px 0 60px}
+.sb-nav::-webkit-scrollbar{width:3px}
+.sb-nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:2px}
+.sb-group-label{
+  font-size:8.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;
+  color:rgba(255,255,255,.35);padding:14px 16px 5px;
+}
+.nav-item{
+  display:flex;align-items:center;gap:9px;padding:7px 16px;
+  cursor:pointer;font-size:11.5px;color:rgba(255,255,255,.6);
+  transition:all .15s;border-left:3px solid transparent;
+}
+.nav-item:hover{background:rgba(255,255,255,.07);color:#fff}
+.nav-item.active{background:rgba(213,26,60,.25);color:#fff;border-left-color:var(--red)}
+.nav-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3);flex-shrink:0}
+.nav-item.active .nav-dot{background:var(--orange)}
+.nav-badge{
+  margin-left:auto;font-size:8.5px;font-weight:700;padding:1px 6px;
+  border-radius:100px;letter-spacing:.4px;text-transform:uppercase;
+}
+/* ── MAIN ── */
+.main{flex:1;overflow:hidden;position:relative;background:#f0f0f0}
+.pages{height:100vh;overflow-y:auto;scroll-snap-type:y mandatory}
+.pages::-webkit-scrollbar{width:5px}
+.pages::-webkit-scrollbar-thumb{background:rgba(0,0,0,.2);border-radius:3px}
+.page{min-height:100vh;scroll-snap-align:start;position:relative;overflow:hidden}
+
+/* ── COVER ── */
+.cover{
+  background:var(--red);display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 0 0 0;
+}
+.cover-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#B5102C 0%,var(--red) 50%,#C91835 100%);
+}
+.cover-shape1{
+  position:absolute;right:-80px;top:-80px;width:500px;height:500px;
+  background:rgba(255,255,255,.04);border-radius:50%;
+}
+.cover-shape2{
+  position:absolute;right:60px;bottom:100px;width:300px;height:300px;
+  background:linear-gradient(135deg,var(--orange)40%,var(--yellow));
+  clip-path:polygon(50% 0%,0% 100%,100% 100%);opacity:.25;
+}
+.cover-shape3{
+  position:absolute;left:-100px;bottom:-100px;width:400px;height:400px;
+  background:rgba(0,0,0,.15);border-radius:50%;
+}
+.cover-inner{
+  position:relative;z-index:2;display:flex;flex-direction:column;
+  height:100%;justify-content:space-between;padding:48px 52px;
+}
+.cover-top{display:flex;justify-content:space-between;align-items:flex-start}
+.cover-logo-block{}
+.cover-logo-world{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:3px}
+.cover-logo-ymca{font-size:32px;font-weight:900;color:#fff;letter-spacing:2px}
+.cover-logo-sub{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:1px;font-weight:500}
+.cover-year-badge{
+  background:rgba(255,255,255,.15);backdrop-filter:blur(10px);
+  border-radius:12px;padding:10px 18px;text-align:right;
+  border:1px solid rgba(255,255,255,.2);
+}
+.cover-year{font-size:36px;font-weight:900;color:#fff;line-height:1}
+.cover-year-label{font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:2px}
+.cover-mid{flex:1;display:flex;align-items:center;padding:40px 0 20px}
+.cover-title-block{}
+.cover-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.12);border-radius:100px;padding:6px 16px;
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,.8);margin-bottom:20px;
+  border:1px solid rgba(255,255,255,.15);
+}
+.cover-h1{font-size:58px;font-weight:900;color:#fff;line-height:1.0;margin-bottom:12px}
+.cover-h1 em{font-style:normal;color:var(--yellow)}
+.cover-h2{font-size:18px;font-weight:400;color:rgba(255,255,255,.75);line-height:1.4;max-width:520px}
+.cover-pills{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.cover-pill{
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  border-radius:8px;padding:10px 18px;
+}
+.cover-pill-label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:2px}
+.cover-pill-val{font-size:12px;font-weight:600;color:#fff}
+.cover-footer{
+  padding-top:20px;border-top:1px solid rgba(255,255,255,.15);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.cover-footer-left{font-size:11px;color:rgba(255,255,255,.5)}
+.cover-footer-right{
+  font-size:10px;color:rgba(255,255,255,.5);text-align:right;line-height:1.4;
+}
+
+/* ── PAGE HEADER (reusable) ── */
+.pg-header{
+  display:flex;align-items:stretch;flex-shrink:0;border-bottom:3px solid var(--grey);
+}
+.pg-header-accent{
+  width:8px;flex-shrink:0;
+}
+.pg-header-content{
+  flex:1;padding:20px 28px;background:var(--light);
+}
+.pg-header-tag{
+  font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--red);margin-bottom:4px;
+}
+.pg-header-title{font-size:22px;font-weight:800;color:var(--black)}
+.pg-header-sub{font-size:12px;color:#666;margin-top:2px}
+
+/* ── SECTION DIVIDERS ── */
+.sec-div{
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:52px;position:relative;overflow:hidden;
+}
+.sec-div-bg1{position:absolute;inset:0}
+.sec-div-circle1{
+  position:absolute;right:-80px;bottom:-80px;
+  width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.06);
+}
+.sec-div-circle2{
+  position:absolute;right:100px;top:40px;
+  width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.04);
+}
+.sec-div-inner{position:relative;z-index:2}
+.sec-div-label{
+  font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.sec-div-label::before{
+  content:'';display:block;width:24px;height:2px;background:var(--orange);
+}
+.sec-div-title{
+  font-size:50px;font-weight:900;color:#fff;line-height:1.05;margin-bottom:10px;
+}
+.sec-div-title em{font-style:normal;color:var(--yellow)}
+.sec-div-desc{font-size:14px;color:rgba(255,255,255,.65);max-width:480px;line-height:1.55}
+.sec-div-seats{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+.seat-box{
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  border-radius:10px;padding:12px 20px;
+}
+.seat-num{font-size:32px;font-weight:900;color:#fff;display:block;line-height:1}
+.seat-label{font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:2px;display:block}
+.sec-div-nav-btn{
+  margin-top:28px;display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
+  border-radius:8px;padding:10px 20px;font-size:11px;font-weight:700;
+  letter-spacing:.5px;text-transform:uppercase;color:#fff;cursor:pointer;
+  transition:background .15s;
+}
+.sec-div-nav-btn:hover{background:rgba(255,255,255,.25)}
+
+/* ── CANDIDATE PROFILE ── */
+.cand-page{background:var(--white);display:flex;flex-direction:column}
+.cand-top{
+  display:flex;align-items:stretch;flex-shrink:0;
+  min-height:200px;border-bottom:2px solid var(--grey);
+}
+.cand-photo{
+  width:190px;flex-shrink:0;overflow:hidden;background:var(--grey);
+  position:relative;
+}
+.cand-photo img{
+  width:100%;height:100%;object-fit:cover;object-position:top center;display:block;
+}
+.cand-photo-init{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-size:52px;font-weight:900;color:rgba(255,255,255,.6);
+  background:linear-gradient(135deg,var(--red),var(--orange));
+}
+.cand-info{
+  flex:1;padding:22px 28px;background:var(--light);
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.cand-pos-tag{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--red);margin-bottom:6px;
+}
+.cand-pos-tag svg{width:10px;height:10px;fill:var(--red)}
+.cand-name{font-size:24px;font-weight:800;color:var(--black);line-height:1.1;margin-bottom:4px}
+.cand-org{font-size:12px;color:#777;margin-bottom:14px}
+.cand-tags{display:flex;gap:7px;flex-wrap:wrap}
+.ctag{
+  font-size:9px;font-weight:700;padding:3px 9px;border-radius:100px;
+  text-transform:uppercase;letter-spacing:.5px;
+}
+.ctag-red{background:rgba(213,26,60,.1);color:var(--red)}
+.ctag-orange{background:rgba(243,110,82,.15);color:#b03800}
+.ctag-yellow{background:rgba(240,196,88,.2);color:#7a5a00}
+.ctag-blue{background:#e3f2fd;color:#1565c0}
+.ctag-green{background:#e8f5e9;color:#2e7d32}
+.ctag-purple{background:#ede7f6;color:#4527a0}
+.ctag-teal{background:#e0f7fa;color:#006064}
+.ctag-pink{background:#fce4ec;color:#880e4f}
+.ctag-amber{background:#fff8e1;color:#e65100}
+
+/* ── BIO ── */
+.cand-bio{
+  flex:1;overflow-y:auto;padding:22px 28px 32px;
+}
+.cand-bio::-webkit-scrollbar{width:4px}
+.cand-bio::-webkit-scrollbar-thumb{background:var(--grey);border-radius:2px}
+.bio-label{
+  font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--red);margin-bottom:14px;display:flex;align-items:center;gap:10px;
+}
+.bio-label::after{content:'';flex:1;height:1px;background:var(--grey)}
+.bio-body{font-size:13px;line-height:1.75;color:#2d2d2d}
+.bio-body p{margin-bottom:12px}
+.bio-body ul{margin:6px 0 12px 20px}
+.bio-body li{margin-bottom:4px}
+.bio-body .bio-sub{
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+  color:var(--black);margin:16px 0 8px;border-left:3px solid var(--orange);
+  padding-left:9px;
+}
+.bio-body .bio-numbered{
+  font-size:12px;font-weight:700;color:var(--red);margin:14px 0 7px;
+}
+.video-link{
+  display:inline-flex;align-items:center;gap:8px;margin-top:16px;
+  background:var(--red);color:#fff;border-radius:8px;padding:9px 18px;
+  font-size:11px;font-weight:700;letter-spacing:.5px;text-decoration:none;
+  opacity:.85;cursor:default;
+}
+
+/* ── COMMITTEE PAGE ── */
+.committee-page{background:var(--white);display:flex;flex-direction:column}
+.committee-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:10px;padding:20px 28px;overflow-y:auto;
+}
+.committee-grid::-webkit-scrollbar{width:4px}
+.committee-grid::-webkit-scrollbar-thumb{background:var(--grey);border-radius:2px}
+.cmt-card{
+  background:var(--light);border-radius:8px;padding:14px;
+  border-left:3px solid var(--red);
+}
+.cmt-role{
+  font-size:8.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  color:var(--red);margin-bottom:3px;
+}
+.cmt-name{font-size:13px;font-weight:600;color:var(--black)}
+.cmt-country{font-size:11px;color:#888}
+
+/* ── SUMMARY PAGE ── */
+.summary-page{background:var(--white);display:flex;flex-direction:column}
+.summary-body{flex:1;overflow-y:auto;padding:0}
+.summary-body::-webkit-scrollbar{width:4px}
+.summary-body::-webkit-scrollbar-thumb{background:var(--grey);border-radius:2px}
+table.stbl{width:100%;border-collapse:collapse;font-size:12px}
+table.stbl thead th{
+  background:var(--black);color:#fff;padding:10px 14px;
+  font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  text-align:left;position:sticky;top:0;z-index:5;
+}
+table.stbl tbody td{
+  padding:9px 14px;border-bottom:1px solid var(--grey);vertical-align:middle;
+}
+table.stbl tbody tr:hover td{background:#fafafa;cursor:pointer}
+.stbl-name{font-weight:600;font-size:12.5px}
+.stbl-pos{color:var(--red);font-weight:600;font-size:11px}
+.rpill{
+  font-size:9px;font-weight:700;padding:2px 8px;
+  border-radius:100px;text-transform:uppercase;letter-spacing:.3px;
+}
+.ra{background:#fff3e0;color:#e65100}
+.ras{background:#e3f2fd;color:#1565c0}
+.re{background:#fce4ec;color:#880e4f}
+.rl{background:#e8f5e9;color:#2e7d32}
+.ru{background:#ede7f6;color:#4527a0}
+.rc{background:#e0f7fa;color:#006064}
+.rm{background:#fff8e1;color:#c05000}
+.youth-yes{
+  display:inline-block;background:rgba(240,196,88,.25);color:#7a5a00;
+  font-size:9px;font-weight:700;padding:2px 7px;border-radius:100px;
+}
+
+/* ── INTRO / TEXT PAGE ── */
+.text-page{background:var(--white);display:flex;flex-direction:column}
+.text-body{
+  flex:1;overflow-y:auto;padding:28px 36px;
+  font-size:13.5px;line-height:1.75;color:#333;
+}
+.text-body::-webkit-scrollbar{width:4px}
+.text-body::-webkit-scrollbar-thumb{background:var(--grey);border-radius:2px}
+.text-body p{margin-bottom:14px}
+.text-body h3{
+  font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  color:var(--red);margin:20px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--grey);
+}
+.text-body h4{font-size:13px;font-weight:700;color:var(--black);margin:14px 0 6px}
+.text-body ul,
+.text-body ol{margin-left:22px;margin-bottom:12px}
+.text-body li{margin-bottom:5px}
+.highlight-box{
+  background:rgba(213,26,60,.07);border-left:4px solid var(--red);
+  border-radius:0 8px 8px 0;padding:14px 18px;margin:14px 0;
+}
+.highlight-box.yellow{
+  background:rgba(240,196,88,.15);border-left-color:var(--yellow);
+}
+
+/* ── NAV CONTROLS (arrows) ── */
+.nav-arrows{
+  position:fixed;bottom:20px;right:20px;
+  display:flex;gap:8px;z-index:300;
+}
+.arr-btn{
+  width:40px;height:40px;border-radius:50%;border:none;
+  background:var(--black);color:#fff;font-size:16px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 12px rgba(0,0,0,.3);transition:all .15s;
+}
+.arr-btn:hover{background:var(--red);transform:scale(1.05)}
+.arr-btn:disabled{opacity:.25;cursor:default;transform:none}
+
+/* ── PROGRESS BAR ── */
+.progress-bar{
+  position:fixed;top:0;left:var(--sidebar);right:0;
+  height:3px;background:rgba(255,255,255,.2);z-index:200;
+}
+.progress-fill{
+  height:100%;background:linear-gradient(90deg,var(--red),var(--orange));
+  transition:width .3s ease;
+}
+
+/* PAGE COUNTER */
+.pg-counter{
+  position:fixed;bottom:26px;left:calc(var(--sidebar) + 50%);
+  transform:translateX(-50%);
+  background:rgba(35,31,32,.8);color:rgba(255,255,255,.8);
+  font-size:10px;font-weight:600;padding:5px 12px;
+  border-radius:100px;z-index:200;backdrop-filter:blur(8px);
+  pointer-events:none;
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sb-header">
+    <div class="sb-world">World Alliance of YMCAs</div>
+    <div class="sb-ymca">YMCA</div>
+    <div class="sb-event">Executive Committee Elections<br>21st World Council · Geneva · July 2026</div>
+  </div>
+  <div class="sb-nav" id="sidebarNav"></div>
+</nav>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  <div class="pages" id="pages"></div>
+  <div class="nav-arrows">
+    <button class="arr-btn" id="btnPrev" title="Previous">&#8593;</button>
+    <button class="arr-btn" id="btnNext" title="Next">&#8595;</button>
+  </div>
+  <div class="pg-counter" id="pgCounter">1 / 1</div>
+</div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// REGION COLOUR HELPERS
+// ═══════════════════════════════════════════════════════════════
+const REGION_COLORS = {
+  'APAY':'ctag-blue','Africa':'ctag-amber','Europe':'ctag-pink',
+  'LAC':'ctag-green','USA':'ctag-purple','Canada':'ctag-teal',
+  'Middle East':'ctag-orange'
+};
+const REGION_PILLS = {
+  'APAY':'ras ra','Africa':'ra','Europe':'re',
+  'LAC':'rl','USA':'ru','Canada':'rc','Middle East':'rm'
+};
+
+// ═══════════════════════════════════════════════════════════════
+// CANDIDATE DATA
+// ═══════════════════════════════════════════════════════════════
+const CANDIDATES = [
+
+// ─────────── PRESIDENT ───────────
+{
+  id:'president-lewis', section:'president',
+  name:'Christopher Lewis',
+  org:'YMCA Australia',
+  position:'Candidate for President',
+  region:'APAY', gender:'Male', youth:false,
+  photo:'Christopher_Lewis_Christopher Lewis Profile Photo 2026 1.jpg',
+  bio:`Christopher has been a committed YMCA leader for over a decade. He serves as a member of the World Alliance Executive Committee, a Director of YMCA Australia, and Chair of YMCA Safeguarding, a harm-prevention charity dedicated to child safety. He previously served as President of YMCA Australia, during which time he guided the movement through significant transformation. In these leadership roles, he has strengthened national structures, championed safeguarding for children and young people, advanced national advocacy, and empowered young leaders.
+
+Christopher is deeply motivated by the belief that young people can thrive when supported. Throughout his career, he has mentored, coached, and developed young leaders, combining his expertise in governance and risk with his passion for people. For him, strengthening governance and financial sustainability is not an end in itself, but a way of ensuring that the YMCA can continue to empower future generations.
+
+The expertise Christopher brings to the YMCA comes from more than 35 years of international leadership in governance, risk management, and organisational transformation. His career has included senior roles as a Partner at KPMG and PwC, working across Australia, New Zealand, the USA, the UK, China, and Asia, and as an Executive at National Australia Bank, one of Australia's largest financial institutions, with global responsibility for risk management. In these roles, he has led large teams, advised multinational organisations, and strengthened governance structures across the globe.
+
+His vision for the YMCA Global Movement is to build a stronger, more united movement rooted in its Christian identity, while ensuring that every YMCA finds its place within the global family. He believes unity is about celebrating diversity while working towards a shared mission, and that the YMCA must continue to be a voice of hope, inclusion, and opportunity in a changing world. He believes in elevating the YMCA's global strategy to amplify its voice for young people and communities worldwide, and in strengthening governance to engage young leaders at every level.
+
+Christopher is committed to ensuring the World Alliance is financially sustainable through transparent and consistent fair share obligations, and to deepening connections across the movement so that knowledge, resources, and opportunities are shared openly. He is also determined to advance Vision 2030, supporting YMCAs everywhere to make meaningful progress on its four pillars. For Christopher, promoting a Sustainable Planet means equipping young people to be environmental stewards. Building a Just World means standing against inequality and ensuring the YMCA remains a defender of human rights. Strengthening Community Wellbeing means investing in health, belonging, and safety in every community the YMCA serves. Creating pathways to Meaningful Work means ensuring young people everywhere have opportunities to learn, contribute, and shape the future.
+
+Christopher has a lifelong commitment to the local community church, with extended involvement with the Salvation Army and more recently through the Baptist Church and draws strength from his faith. Away from governance tables and boardrooms, Christopher values time spent mentoring emerging leaders, contributing to community initiatives, and investing in the next generation.
+
+Christopher believes his journey, spanning global professional leadership, national YMCA transformation, and a deep commitment to safeguarding and youth empowerment, has prepared him to serve as President. At this moment in the YMCA's history, with Vision 2030 as the shared compass, he is ready to help guide the movement into its next chapter of unity, relevance, and impact.`
+},
+
+// ─────────── DEPUTY PRESIDENT ───────────
+{
+  id:'dp-bremner', section:'deputy-president',
+  name:'Sarah Bremner',
+  org:'National Council of YMCAs of Scotland',
+  position:'Candidate for Deputy President',
+  region:'Europe', gender:'Female', youth:false,
+  photo:'Sarah_Bremner_Sarah Bremner Picture.png',
+  bio:`Rooted in the YMCA since childhood, with 17 years of volunteering across local, national and global levels, I bring both lived commitment and strategic governance experience to my candidacy for Deputy President. My lifelong connection to the Movement has shaped my values, leadership style and vision for a YMCA that is united, impact-led and forward-looking. Alongside my YMCA commitments, I work as a Primary School Teacher specialising in Additional Support for Learning. This role has sharpened my skills in team leadership, strategic planning, and inclusive practice.
+
+The YMCA has given me opportunities that have profoundly shaped my life. I am motivated to give back through strategic leadership, building on the progress we have made in implementing Vision 2030 and helping to shape the Movement's post-2030 strategy. As Deputy President, I would work to strengthen the bonds between out local, national and international YMCA, ensuring that youth voices are purposefully valued in all levels of decision-making, especially within office bearer positions. My focus would be on fostering an inclusive governance culture that supports innovation, transparency and unity.
+
+Locally, currently the Chairman of Dumfries YMCA (since 2023), overseeing financial planning, building strategic partnerships and ensuring a clear separation between operational and governance responsibilities. I have sat as a Trustee of local YMCAs for thirteen years and was a youth representative for 3 years prior to this.
+
+Nationally, I began on the Youth Committee before joining the Executive Committee, where I am currently Vice-Chair (since 2018) and Chairman of the International Sub-Committee (since 2022).
+
+Internationally, I have attended YMCA Europe events, I am a World YMCA Change Agent, 1st cohort, graduate, and attended the 2014, 2018 and 2022 World Councils. My service on the World YMCA Executive Committee - including the Governance Sub-Committee - has strengthened my ability to lead strategic conversations, navigate diverse perspectives and build consensus across cultures.
+
+Key competencies I bring include:
+- Strategic Leadership - Proven ability to align local, national and global strategies, ensuring that decisions support the Movement's shared goals.
+- Cross-Cultural Collaboration - Extensive experience working with colleagues from different cultural and linguistic backgrounds, ensuring inclusive and respectful governance.
+- Facilitation and Mentorship - Skilled at chairing committees, guiding discussions and mentoring younger leaders to ensure youth perspectives are integrated into decision-making.
+- Governance Acumen - Deep knowledge of Board processes, policy development and fiduciary oversight, with the ability to balance strategic priorities with practical realities.
+- Advocacy and Representation - Experienced in representing the YMCA at international events and as a spokesperson within diverse stakeholder settings.
+
+The YMCA's mission to empower young people resonates deeply with my own values and professional work. I have seen first-hand how creating safe spaces for open dialogue, fostering community wellbeing and building opportunities for meaningful work can transform lives. My passion lies in ensuring that every young person - regardless of background - has access to these opportunities.
+
+YMCA now has the opportunity to elect younger office bearers. At 31, I bring a younger perspective, a leader that has grown through the YMCA and gained significant governance experience at multiple levels. As Deputy President, I would champion Vision 2030 while helping to lead the process for the Movement's next strategic framework - promoting deliberate, solution-focused discussions, building strong partnerships and preparing the YMCA to thrive beyond 2030.
+
+The YMCA has shaped who I am - as a leader, as an educator, and as an individual. If elected, I will work with the President, Executive Committee and Secretary General to strengthen governance, promote inclusion and ensure that the YMCA remains a global partner of choice. My goal is to inspire young people to step into leadership roles, ensuring the Movement's vitality for generations to come.`
+},
+{
+  id:'dp-osmundsen', section:'deputy-president',
+  name:'Emma Osmundsen-White',
+  org:'National Council of YMCAs of England and Wales',
+  position:'Candidate for Deputy President',
+  region:'Europe', gender:'Female', youth:false,
+  photo:'Emma_Osmundsen-White_Emma Osmundsen by Rosie Parsons Photography-1 copy 2.jpeg',
+  bio:`[1. What motivates your nomination?]
+
+I am motivated to serve as Vice President on the World YMCA Executive Committee because I believe in the power of good governance to shape a Movement that remains inclusive, effective, and impactful. As President of YMCA Europe, now in my second term, I have led the region through significant change, including responding to the war in Ukraine, renewing our strategy, and restructuring our constitution. This has reinforced my commitment to governance that is adaptive, transparent, and representative.
+
+My motivation is rooted in my Christian faith and service to the YMCA's mission—empowering young people and strengthening communities. At the global level, I believe I can help ensure that strategy and governance remain aligned with Vision 2030 and responsive to real-world challenges. I am passionate about supporting a unified, youth-led Movement that holds itself to high standards and invests wisely in its future.
+
+If elected, I aim to:
+- Strengthen governance that reflects shared values
+- Build stronger bridges between regions and global leadership
+- Advance strategies that are financially, socially, and environmentally responsible
+- Champion inclusive leadership and youth participation
+
+[2. Governance and Leadership Experience]
+
+I bring extensive governance and leadership experience across the YMCA Movement and beyond:
+
+- President, YMCA Europe (2020–Present): Led constitutional reform, strategic renewal, and the Ukraine conflict YMCA response.
+- Vice Chair, YMCA England & Wales: Provide strategic leadership and oversight for a national body supporting over 80 local YMCAs.
+- Trustee, YMCA Exeter: Active at the local level, supporting frontline youth and community services.
+- Trustee, George Williams Fund (Europe): Supporting the work of YMCA Europe and investing in its sustainable future.
+- Chair, Passivhaus Trust UK: the national authority on energy-efficient building standards.
+
+At the World YMCA level, I currently serve on:
+- Impact Investment Committee
+- Constitution Sub-Committee
+- Strategy Committee
+
+I am also a Chartered Director and Fellow of the Chartered Institute of Directors, recognised for excellence in board leadership and nonprofit governance. I hold a Diploma in Company Directorship and a Masters in Leadership and Change.
+
+[3. Skills and Contributions]
+
+My professional and volunteer leadership experience equips me with the skills to contribute meaningfully to the World YMCA. I have a strong background in strategy, finance, and risk oversight, alongside deep experience in leading organisations through transition and innovation. I am committed to fostering a culture of accountability, inclusion, and sustainability.
+
+I am a Chartered Surveyor with 30 years of professional experience delivering multi-billion-pound property developments, predominantly social housing, and to exemplar environmental standards – of which I have a global reputation. I am a public sector director working in London and I am vocationally driven to deliver a positive impact for people, planet and in place-making. Voluntarily, my property expertise is utilised by the YMCA at a local, national and international level to deliver positive outcomes for young people and their communities.
+
+I believe my contribution to the Executive Committee as Vice President would be to:
+- Work alongside and support the President, Treasurer and General Secretary
+- Mentor, help and encourage Executive Members to ensure diverse voices, particularly young leaders, are represented
+- Apply tested governance expertise to support effective decision-making
+- Strengthen global solidarity by connecting regional experiences with global priorities
+- Advocate for sustainable growth, ensuring the YMCA's resources are stewarded responsibly
+
+In summary, I offer proven leadership, a passion for inclusive governance, and a deep commitment to the YMCA's global mission. I seek election not only to serve but to help ensure that the World YMCA continues to inspire, empower, and unite generations in building a more just and sustainable future.`
+},
+{
+  id:'dp-senghore', section:'deputy-president',
+  name:'Ronald Senghore',
+  org:'National Council of YMCAs of Gambia',
+  position:'Candidate for Deputy President',
+  region:'Africa', gender:'Male', youth:false,
+  photo:'Ronald _Senghore_Ronald Senghore.jpg',
+  bio:`I am Ronald Senghore, a Gambian professional and lifelong YMCA volunteer with over twenty-five years of service to the movement. From my early years as a youth leader at the Gambia YMCA to my current roles in governance at national, continental, and global levels, the YMCA has shaped my leadership journey, my values, and my commitment to empowering young people and transforming communities.
+
+I am motivated to put myself forward because I believe the YMCA plays a unique role in shaping young leaders and transforming communities. Young people today face challenges such as unemployment, climate change, and shrinking civic space, yet they also have great potential to lead. I want to use my skills and experience to strengthen the YMCA as a platform where young people can thrive and to contribute to advancing Vision 2030.
+
+I currently serve as Chair of the Governance Committee at the World YMCA Executive Committee, having been re-elected in 2022. I also chair the Governance Committee of the Africa Alliance of YMCAs and serve as Vice Chairperson of The Gambia YMCA, roles that keep me engaged at regional and grassroots levels.
+
+I was first elected to the World YMCA Executive Committee in 2018, where I helped lead the organization during the COVID-19 pandemic. I was part of the EXCO team that established the Solidarity Fund to support YMCAs in crisis and co-organized the Youth-Led Solutions Initiative on climate justice and the future of work. Being re-elected in 2022 has allowed me to continue this work and to contribute to the implementation of Vision 2030.
+
+I hold a BSc in Management (Cum Laude) and have completed specialized training in Entrepreneurship, Change Agent, Peer Health Education, and Communications. Professionally, I bring more than 17 years of experience in Marketing and Communications. I am a Marcom Manager at Africell Gambia Ltd; the country's leading telecommunications company, where I have led national campaigns, managed teams, and built partnerships with government, civil society, and the private sector. I have overseen major projects such as the Future Leaders project, The Freedom Concert, Work for Peace and a 25,000 Tree Planting Initiative across the country.
+
+In addition, I host The 20–22 radio show on Afri-Radio, where I engage young people on empowerment and national issues. This platform allows me to amplify youth voices and create dialogue on matters that affect them most.
+
+My core competencies include strategic communication, governance, project management, and stakeholder engagement. These skills directly support the YMCA's Vision 2030 priorities by strengthening governance structures, building effective partnerships, and empowering young people to take leadership in areas such as meaningful work, community well-being, sustainable planet, and just world.
+
+What keeps me passionate about the YMCA is its impact. The YMCA gave me opportunities to lead, to learn, and to grow, and I want to see many more young people experience the same. I have seen YMCA programmes nurture entrepreneurs, mobilize communities for climate action, and inspire young people to lead with confidence.
+
+With my governance experience, professional background, and passion for youth empowerment, I am committed to contributing actively to the Executive Committee. My skills will help ensure sound decision-making, transparent governance, and the representation of diverse voices, keeping the YMCA at the forefront of empowering young people for the transformation of communities.`
+},
+
+// ─────────── TREASURER ───────────
+{
+  id:'treasurer-skinner', section:'treasurer',
+  name:'Laurie Lynn Skinner, FCPA, FCA, ICD.D.',
+  org:'Y-Canada',
+  position:'Candidate for Treasurer',
+  region:'Canada', gender:'Female', youth:false,
+  photo:'Laurie_Skinner_Laurie Skinner_Headshot.jpg',
+  bio:`[Motivation for the Nomination]
+
+My motivation to serve on the World YMCA Executive Committee stems from a deep commitment to and belief in the transformative power of the YMCA movement. My involvement with the YMCA spans local leadership in Newfoundland and Labrador, national governance with YMCA Canada, and global engagement as a co-opted member of the World YMCA Finance Committee. These experiences have shown me the power and the impact of the YMCA. Attending the World Council 2022 and the 2024 Accelerator Summit, participating in the Executive Committee Meeting in India, and visiting the East Jerusalem YMCA have deepened my understanding of the movement's global reach and diversity. These moments reinforced my belief in the importance of inclusive leadership, financial sustainability, and strong governance to advance the YMCA's mission.
+
+I am inspired by Vision 2030 and its adaptable framework for transforming lives and communities. As we continue implementing Vision 2030, I see a valuable opportunity to help shape World YMCA's strategic direction through financial stewardship and governance excellence.
+
+With my background as a CPA (Fellow); a strong commitment to governance excellence demonstrated by my ICD.D designation obtained through formalized governance training; and extensive leadership experience, I am motivated to serve as Treasurer. I aspire to help build a resilient organization that empowers, inspires, and mobilizes youth globally.
+
+[Governance / Board of Directors Leadership Experience]
+
+My governance experience spans both professional and volunteer roles. In my professional career, I reported to Boards of publicly traded corporations with revenues ranging from $350-$720 million and assets between $300-$400 million. I held senior leadership roles within the Government of Newfoundland and Labrador, including as Deputy Minister of Finance, where I managed a $7.5 billion budget and contributed to economic and social policy development. In my volunteer capacity, I serve on the Finance Committee of the World YMCA in an advisory role. At YMCA Canada, I served as Chair of the Board and participated in key committees including Executive Human Resources; the Diversity, Equity and Inclusion Advisory Council; Nominations and Governance; and Finance, Audit and Risk, overseeing an organization with $20 million in revenue and $35 million in assets, including an investment portfolio of $27 million. At YMCA of Newfoundland and Labrador, I also served as Chair of the Board and led committees such as Nominations and Governance; Development; Strategic Planning; and Audit/Finance, supporting an organization with $7.3 million in revenue and $15.5 million in assets.
+
+[Competencies for Executive Committee Deliberations and Advancement]
+
+I bring over 25 years of senior executive and strategic leadership experience. My competencies include financial strategy, internal controls, policy development, operations, risk management, information technology, governance, and human resources. I have worked across multiple sectors including public accounting, publicly traded companies, government, non-profits, entrepreneurial ventures, and education. These experiences have equipped me with the skills to contribute meaningfully to Executive Committee deliberations and to help the World YMCA achieve its strategic goals through sound governance and financial leadership.
+
+[Passion for the YMCA Impact]
+
+My passion for the YMCA is rooted in its ability to create inclusive, empowering spaces for youth and communities. The YMCA has shaped my leadership journey and continues to inspire my commitment to service. I actively promote the YMCA's mission, encouraging others to engage through advocacy, storytelling, and leadership. I am especially passionate about helping the YMCA thrive in regions where infrastructure is limited, by strengthening governance, building partnerships, and ensuring financial sustainability. I am honoured to be part of this movement and energized by the opportunity to help guide its future.`
+},
+
+// ─────────── EXCO – AFRICA ───────────
+{
+  id:'exco-nganga', section:'exco-africa',
+  name:"Pius Kamau Ng'ang'a",
+  org:'National Council of YMCAs of Kenya',
+  position:'Candidate for Executive Committee Member',
+  region:'Africa', gender:'Male', youth:false,
+  photo:"Pius_Ng'ang'a_Pius Kamau Nganga Passport Size Photo.jpg",
+  bio:`[1) What motivates my nomination?]
+
+My life purpose has been to advance youth empowerment which is rooted in my years of volunteering and service at local branch and national board levels and currently as the national president of the Kenya YMCA. I believe in the YMCA vision and purpose of applying Christian values in leadership to drive positive change globally.
+
+[2) Governance and Board of Directors Experience]
+
+- Founder and Chief Executive Officer (2006-current) of Capital Strategies Kenya Limited, a business consultancy firm based in Nairobi.
+- Committee Member (2020-2023), Sector Training Committee of the National Industrial Training Authority (NITA).
+- Current and founding Chairman, SIYB Association of Kenya, a membership organisation.
+- Co-opted Board Member and Local Treasurer (2023-current) for the African Alliance of YMCAs (AAYMCA).
+- National President, Kenya YMCA (2023 – Current); National Treasurer, Kenya YMCA (2016-2023); Branch treasurer, Thika Branch (2003-2006).
+- Board Chairman (2015-2023), Board of Management (BOM), Gatituini Secondary School, Muranga County, Kenya.
+- Secretary (2010-2012), Board of Directors, Living Water International Kenya.
+
+[3) Competences for Executive Committee Deliberations]
+
+Academic qualifications: Currently finalising a PhD degree in Entrepreneurship at Jomo Kenyatta University of Agriculture and Technology. Hold an MBA degree from the University of Nairobi, a bachelor's degree in economics and mathematics from Kenyatta University. Hold several post graduate qualifications in business management, enterprise development and finance.
+
+Consultancy Experience: I have provided advisory services and been engaged in consultancy work for international organisations such as The World Bank, USAID, USADF, FCDO and DANIDA; UN Agencies such as ILO, IFAD, IOM, UNDP; Financial Institutions like KCB Bank Limited, Equity Bank Ltd and Cooperative Bank Ltd and various Government Agencies.
+
+[4) Passion for YMCA Impact]
+
+For the past 25 years, the YMCA has inspired my life in an immense way and provided me with a deep passion for community service, fervour for youth empowerment and transformation of communities.
+
+I have served the YMCA at various levels. As National President of Kenya YMCA, I have contributed to youth development and upskilling. Under my leadership, Kenya YMCA has expanded its local (Ajira Kenya and NITA) and international partnerships (ILO) while establishing links with local banks HFC Bank and KCB. These partnerships amongst others have enabled the movement to reach about 500,000 youth annually, allowing beneficiaries to improve their employability and entrepreneurship skills. These interventions also align with the World YMCA Vision 2030 to empower young people, particularly the pillar on meaningful work.`
+},
+{
+  id:'exco-nalisoa', section:'exco-africa',
+  name:'Nalisoa Andrianarivo',
+  org:'National Council of YMCAs of Madagascar',
+  position:'Candidate for Executive Committee Member',
+  region:'Africa', gender:'Female', youth:true,
+  photo:'Nalisoa _Andrianarivo_Nalisoa 1.jpg',
+  bio:`Nalisoa Andrianarivo joined YMCA Madagascar in 2016 as a member of an environmental club, which she co-led the following year. Since 2018, she has been actively involved at the regional level through programs such as Young Advocate for Change and the Subject to Citizen (S2C) Ambassadors, experiences that deepened her understanding of the African context and strengthened her belief in the potential of African youth. She was also a participant in the fourth cohort of Change Agents. Her YMCA journey has shaped her identity, encouraged her to take bold steps, learn from mistakes, and continuously grow.
+
+For Nalisoa, the YMCA has always been a space where young people can thrive: discover their identity, recognize their strengths, work on their weaknesses, and become the change they wish to see in their communities.
+
+In 2022, she was elected to the Executive Committee of the World Alliance of YMCAs, where she has served on the Strategic Alignment Committee. In the same year, she also joined the Executive Committee of the African Alliance of YMCAs. Through these roles, she has gained better understanding of essential topics including governance, policies, strategy, guided by the principle of keeping her "nose in but fingers out," while continuing to learn more about areas such as finance.
+
+Nalisoa holds a degree in Education Science and has worked as a teacher and pedagogical advisor in primary and secondary schools in Madagascar. She also serves as a language consultant for development organizations focusing on inclusive education and disability inclusion. These roles have taught her that true impact comes from listening and empowering people as agents of change rather than treating them only as beneficiaries.
+
+She is also an alumna of the Young African Leaders Initiative (YALI), having completed certified training in civic leadership through the University of South Africa.
+
+As the world faces turbulent times and major changes, Nalisoa is committed to contributing to a YMCA that adapts to evolving realities, remains relevant to the people and communities it serves, and continues to work towards building a Just World.`
+},
+
+// ─────────── EXCO – APAY ───────────
+{
+  id:'exco-lewis-apay', section:'exco-apay',
+  name:'Christopher Lewis',
+  org:'YMCA Australia',
+  position:'Candidate for Executive Committee Member',
+  region:'APAY', gender:'Male', youth:false,
+  photo:'Christopher_Lewis_Christopher Lewis Profile Photo 2026 1.jpg',
+  bio:`Christopher has been a committed YMCA leader for over a decade. He serves as a member of the World Alliance Executive Committee, a Director of YMCA Australia, and Chair of YMCA Safeguarding, a harm-prevention charity dedicated to child safety. He previously served as President of YMCA Australia, during which time he guided the movement through significant transformation. In these leadership roles, he has strengthened national structures, championed safeguarding for children and young people, advanced national advocacy, and empowered young leaders.
+
+Christopher is motivated by the belief that young people can thrive when supported. Throughout his career, he has mentored, and developed young leaders. Christopher brings expertise to the YMCA from more than 35 years of international leadership in governance, risk management, and organisational transformation. His career has included roles as a Partner at KPMG and PwC, working across Australia, New Zealand, the USA, the UK, China, and Asia, and as an Executive at one of Australia's largest financial institutions. In these roles, he has led large teams, advised multinational organisations, and strengthened governance structures.
+
+His vision for the YMCA Global Movement is building a stronger, more united movement rooted in its Christian identity, while ensuring that every YMCA finds its place within the global family. He believes in celebrating diversity while working towards a shared mission. The YMCA must be a voice of hope, inclusion, and opportunity in a changing world. He believes the YMCA's global strategy to amplify its voice for young people and communities worldwide, and strengthening governance to engage young leaders at every level is vital.
+
+Christopher is committed to ensuring the World Alliance is financially sustainable and to deepening connections across the movement. He is committed to advancing Vision 2030, supporting YMCAs everywhere to make meaningful progress on its four pillars.
+
+Christopher has a lifelong commitment to the local community church, with extended involvement with the Salvation Army and more recently through the Baptist Church. He draws strength from his faith. Away from governance tables and boardrooms, Christopher values time spent contributing to community initiatives and investing in the next generation.
+
+Christopher believes his journey, spanning global professional leadership, national YMCA transformation, and a deep commitment to safeguarding and youth empowerment, has prepared him to serve as a member of the World Alliance of YMCA's.`
+},
+{
+  id:'exco-betsy', section:'exco-apay',
+  name:'Dr. Betsy Merilyn Williams',
+  org:'National Council of YMCAs of India',
+  position:'Candidate for Executive Committee Member',
+  region:'APAY', gender:'Female', youth:false,
+  photo:'Dr. Betsy Merilyn _Williams_Dr. Betsy M. Williams - Photo.jpeg',
+  bio:`I am Dr. Betsy Merilyn Williams, 40 years old, with a Ph.D. in English Literature from Andhra University, Visakhapatnam, India. I come from a family deeply connected to the YMCA movement, where my parents, Rolland Williams and Geetha Williams, have been active members of the YMCA Visakhapatnam for more than four decades.
+
+My father, Rolland Williams, has contributed significantly to the growth of the YMCA at both the regional and national level. He served as the President of YMCA Visakhapatnam for nine years, as Vice President of the National Council from 2009 to 2012, and again as President of the Indian YMCA in 2015. He was also honoured to serve as a World Council Executive Member from 2014 to 2018.
+
+I am honoured to submit my nomination for the position of Executive Committee Member. My journey with the YMCA spans over 30 years, beginning in my childhood with summer coaching classes at YMCA Visakhapatnam, where I learned swimming and skating. Over the years, my involvement grew as I actively participated in youth programs and attended numerous regional and Asia-Pacific conferences, which shaped my leadership outlook and global perspective.
+
+From 2012 to 2015, I served as a Board Member of YMCA Visakhapatnam and was appointed as a Change Agent for the World Council. During this period, I had the privilege of attending the World Council in Denver as a delegate, an experience that broadened my understanding of global youth engagement and strengthened my commitment to the YMCA movement.
+
+In 2020, I was elected as the Executive Member, and in 2023, I became the first woman National Vice President of NCYI. These milestones were not only personal achievements but also significant steps forward in creating inclusive leadership opportunities for women in the YMCA.
+
+My main interest in the World Alliance is to learn more about its administration, programmes, activities, and objectives, particularly its service towards the four pillars of impact—community well-being, meaningful work, a sustainable planet, and a just world.
+
+As part of my community involvement, I have organized medical camps, and during the COVID-19 pandemic, I was actively engaged in outreach work, serving in underprivileged slum areas to provide essential needs and support. These experiences have strengthened my dedication to creating impact through service, compassion, and inclusive leadership.`
+},
+{
+  id:'exco-charis', section:'exco-apay',
+  name:'Charis Gabriel Lim',
+  org:'National Council of YMCAs of Singapore',
+  position:'Candidate for Executive Committee Member',
+  region:'APAY', gender:'Male', youth:false,
+  photo:'Charis _Lim _Charis Gabriel Lim Photo.png',
+  bio:`My desire to serve on the World YMCA Executive Committee (EC) stems from a deep belief in the movement's transformative power and a profound commitment to its continued global impact. I am motivated by the opportunity to lend my leadership and passion to an organization that effectively nurtures youth, promotes healthy living, and fosters social responsibility worldwide. Inspired by the YMCA's dedication to inclusivity and its tangible influence on countless lives, I am eager to play a more direct role in shaping its future direction.
+
+As Board President of Metropolitan YMCA Singapore (MYMCA), I oversee an 1,800-employee organization with an annual turnover of US$120M. MYMCA delivers vital community impact programs for children, youth, and marginalized families, alongside successful social enterprises in hospitality, urban farming, and eco-stewardship. This role has provided extensive governance experience and a comprehensive understanding of effective oversight and strategic decision-making within a large, multi-faceted organization.
+
+During my tenure at MYMCA, I was instrumental in developing a strategic plan aligned with World YMCA's Vision 2030, intentionally guiding MYMCA to maintain its relevance through social innovation. This demanded a keen ability to analyze complex issues, engage diverse stakeholders, and ensure fiscal prudence. My experience extends to corporate leadership as CEO of Research Communication International, where I spearheaded regional government initiatives in leadership and human capital analytics. These combined non-profit and corporate experiences are directly transferable to the responsibilities of the EC.
+
+Academically, I hold a Bachelor's and a Master of Philosophy degree with high honors from the University of Cambridge. Currently, I serve as an Adjunct Fellow at the Singapore University of Technology & Design. I also sit on the Executive Board of the Trinity Annual Conference as well as the Executive Council of the Methodist Church in Singapore. My board service spans multiple corporate, community, church, and education sectors.
+
+My core competencies for the EC include strong strategic planning abilities, financial acumen, and effective communication skills. I possess a proven track record of facilitating robust deliberations, ensuring all perspectives are considered for well-informed decisions.
+
+I am deeply passionate about the YMCA's ability to drive significant positive change globally. Having personally witnessed the profound impact of our youth mental health programs on local families in Singapore, I am committed to leveraging my skills and experience to ensure the World YMCA remains a vibrant, responsive, and indispensable pillar of communities worldwide for generations to come.`
+},
+{
+  id:'exco-joshua', section:'exco-apay',
+  name:'Yau Chung Wan (Joshua)',
+  org:'Council of YMCAs of Hong Kong',
+  position:'Candidate for Executive Committee Member',
+  region:'APAY', gender:'Male', youth:false,
+  photo:'Chung Wan_YAU_Picture_YAU Chung Wan.jpg',
+  bio:`By profession, I am an educator, by faith, I am an elder of a Reformed Church in Hong Kong.
+
+My journey of YMCA service began 50 years ago when I was the founding principal of a secondary school in Hong Kong New Territories. I worked closely with the social worker from YWCA and the youth centre of Chinese YMCA of Hong Kong (CYMCA). These dedicated youth services with Christian values drew me to become a member of the New Territories Service Committee of CYMCA.
+
+Since 2000, I joined the Board of CYMCA to practise 'to serve but not to be served'. I was elected as CYMCA Vice-President (2007-2009) as well as President of the Council of YMCAs of Hong Kong (2009-2011), and gradually involved in the global YMCA movement.
+
+I chaired the Host Organisation Committee of the World Council 2010 in Hong Kong, and was elected the President of APAY (2011-2015) and served the WAY Executive Committee as an ex-official member. During my term, I implemented capacity building through leadership development and promoted global citizenship through education and youth projects in APAY.
+
+Upon completion of service as APAY President, my focus turned to local movement and served as CYMCA Vice-president (2014-2017), President (2017-2021). Apart from leading CYMCA to provide services for our community during Covid, I also led the establishment of services on health care, ethnic minorities, as well as social enterprises during this period.
+
+My motivation to serve the Executive Committee of the WAY again stems from my lifelong commitment to serve the youth through education and holistic development, especially in this ever-changing world of YMCA. This vision has been reignited by a recent document of OECD in education. It has enlightened me that YMCA and teachers are much alike. The recent development of 'Learning Compass' with comprehensive development of core values, competencies of teachers as well as their wellness, agency and co-agency are crucial to the global goal of wellbeing in 2030 and 2040. In YMCA context, continuous holistic development applied to both the people who serve and those being served. The vigor and potency of these concepts aligned with the WAY Vision 2030, and our belief in the youth empowerment and leadership development.
+
+Thus, with the professional training, service record and governance experience in YMCA movement, I am confident to serve on the new term of Executive Committee of WAY, bring positive impact to our youth.`
+},
+{
+  id:'exco-czieloh', section:'exco-apay',
+  name:'Czieloh Jomea Villajin',
+  org:'National Council of YMCAs of Philippines',
+  position:'Candidate for Executive Committee Member',
+  region:'APAY', gender:'Female', youth:true,
+  photo:'3. Czieloh Villajin_YMCA Philippines Photo.jpeg',
+  bio:`My candidacy stems from witnessing how strategic investment in youth leadership creates exponential impact across communities. From my journey as a high school YMCA contestant to now leading initiatives across national and international levels, I've seen firsthand how one empowered young person returns to their community and builds programs that weren't there before. This cascading effect - creating pathways for young people to become change agents themselves - is what drives my commitment to ensuring YMCA continues this legacy across Asia Pacific and beyond.
+
+As Youth Trustee at YMCA of Manila, I chair Gender Equity and Youth Leadership & Development Committees, driving transformative endeavors. I led our complete rebranding, creating materials still used across all platforms - demonstrating how professional competencies directly strengthen YMCA operations.
+
+My governance spans multiple levels: Central Board Member and Vice Chair of Training Committee at Girl Scouts of the Philippines, developing curricula for trainers nationwide; World Association of Girl Guides and Girl Scouts Asia Pacific Young Woman Ambassador (2019-2022), co-leading the "Girl Scouts' Digest: Philippine Movement in Post-COVID Era" study; Asia Pacific Alliance of YMCAs Gender Equity Committee Member; and currently YMCA Philippines National Youth Trustee.
+
+As Policy and Advocacy Lead at ALPAS Consultancy, I bring stakeholder management and policy analysis expertise essential for activating partnerships. I promote legislative amendments through compelling writing that transforms complex regulatory information into accessible formats, while coordinating across units such as analytics and digital to optimize campaign effectiveness. My programs ANGKLA (crisis communications) and Talakayan (political narrative democratization) earned Philippine Quill Awards, while our socialized housing campaign won a Gold Standard Award in Singapore.
+
+My training includes World YMCA Change Agents Programme Cohort 5, M.Y Global LEAD Youth Leaders Symposium, and Green Ambassadors Training with Asia Pacific Alliance of YMCAs. I've also represented APAY at the YMCA Global Gathering's International Women's Day panel reaching 400+ participants.
+
+Concrete impacts include: establishing the first YMCA Women's Basketball Tournament recruiting 88 new members, expanding gender programming impacting 200+ participants, co-leading ongoing "Kabataang Pinuno" voters' education campaign with national media appearances, and developing livelihood programs.
+
+As one of the Ten Outstanding Students of the Philippines National Honorees, I carry the responsibility of using privilege purposefully. My work reflects a commitment to building spaces where every young person - regardless of background, gender identity, or economic circumstance - can discover their voice and power. I'm dedicated to ensuring YMCA remains not just relevant but revolutionary for today's diverse youth.`
+},
+
+// ─────────── EXCO – EUROPE ───────────
+{
+  id:'exco-bremner-europe', section:'exco-europe',
+  name:'Sarah Bremner',
+  org:'National Council of YMCAs of Scotland',
+  position:'Candidate for Executive Committee Member',
+  region:'Europe', gender:'Female', youth:false,
+  photo:'Sarah_Bremner_Sarah Bremner Picture.png',
+  bio:`Rooted in the YMCA since childhood and with 17 years of volunteer service across local, national and global levels, I bring both lived commitment and strategic governance experience to the World YMCA Executive Committee. My journey through the Movement has shown me the unique power of connecting our local, national and international YMCA families, and it is this connection that drives my continued service. Alongside my YMCA work, I am a Primary School Teacher specialising in Additional Support for Learning, managing teams of support assistance across multiple schools to ensure that every child can thrive.
+
+Locally, as Chairman of Dumfries YMCA (since 2023), I have strengthened partnerships, overseen responsible financial planning during difficult times and clearly differentiated between operational and strategic roles to ensure effective governance. Nationally, I began as part of YMCA Scotland's Youth Committee before joining the Executive Committee, where I currently serve as Vice-Chair of the National Board (since 2018) and Chair of the International Sub-Committee (since 2022).
+
+Internationally, I have attended YMCA Europe events, graduated as a World YMCA Change Agent (cohort 1) and attended the 2014, 2018 and 2022 World Councils. My current role on the World YMCA Executive Committee - including the Governance Sub-Committee - has further developed my strategic oversight skills, deepened my understanding of governance at the global level, and provided valuable training in areas such as financial accountability, building and maintaining strategic partnerships, and resource mobilisation.
+
+Through these experiences, I have honed competencies essential for a member of the Executive Committee: strategic thinking, scenario planning, cross-cultural collaboration, and the creation of safe spaces for open and constructive dialogue. I understand the importance of addressing challenges proactively, balancing differing perspectives, and fostering inclusive decision-making.
+
+I am committed to advancing Vision 2030 while contributing to the development of the post-2030 strategic framework. My focus is on identifying the next opportunities to empower young people, building strong partnerships and ensuring deliberate, solution-focused discussions that strengthen our Global Movement.
+
+YMCA has supported and shaped me by providing life-changing opportunities. Now, I am ready to continue giving back through strategic leadership, helping to inspire young people to become leaders of today. If re-elected, I will work to ensure that the World YMCA remains united, impact-led, and forward-looking - not only achieving the goals of Vision 2030 but preparing for the next step in the journey.`
+},
+{
+  id:'exco-lena', section:'exco-europe',
+  name:'Lena Revekka Schickhaus',
+  org:'National Council of YMCAs of Germany',
+  position:'Candidate for Executive Committee Member',
+  region:'Europe', gender:'Female', youth:true,
+  photo:'Lena_Schickhaus_Lena_Schickhaus.jpg',
+  bio:`[MOTIVATION]
+
+I believe our YMCA movement is needed more than ever before in our so troubled world. Young people need to be heard and civil organizations need to bring people together to thrive for peace and a meaningful future. This is why I want to contribute to the World YMCA - to help our organization to step in for a better future for any young person. I want to serve at the ExCo and use my experience from the 2022-2026 ExCo Term and as Vice chair of YMCA Berlin to speak up for the other young people in our YMCAs and find new solutions and ideas how the YMCA can become a vibrant movement ready for whatever our world needs. I want us, the World YMCA, to grow and become resilient, ready to overcome the challenges we are already facing.
+
+[GOVERNANCE/BOARD OF DIRECTORS LEADERSHIP EXPERIENCE]
+
+- Member of World YMCA Executive Committee since 2022, Strategy committee
+- Vice President of YMCA Berlin since 2019 (1-2 mio € revenue)
+- Member of the committee "YMCA Worldwide" in YMCA Germany
+- YMCA Change Agent (2017-2018)
+
+[COMPETENCIES FOR EXECUTIVE COMMITTEE DELIBERATIONS AND ADVANCEMENT]
+
+- Medical studies at Charité Berlin, working as a doctor in pediatrics since 2022, experience in children's health advocacy, global health and wellbeing
+- International YMCA experience, including one year voluntary service in YMCA Perú, prepares me to bring our people together, let different voices be heard and connect diverse realities
+
+[PASSION FOR THE YMCA IMPACT]
+
+I believe the YMCA is the best place on earth for young people to explore their purpose in life, get the motivation to change our world and find hope for the future. Once experiencing lifechanging moments and faith-filled friendships in the YMCA myself, now I enjoy serving on my local board, in our national committee for international topics and in the World YMCA ExCo. I can truly live God's calling on my life to serve the most vulnerable people in our societies and for this I couldn't have found a better place than the YMCA.
+
+The beauty of people coming together from all ends of the world and having the same goal -striving for hope, purpose and future for our generation- is what amazes me most about the YMCA and what I share with the people around me.`
+},
+
+// ─────────── EXCO – LAC ───────────
+{
+  id:'exco-gabriel', section:'exco-lac',
+  name:'Gabriel "Tang" Stabile Lopes Da Silva',
+  org:'National Council of YMCAs of Brazil',
+  position:'Candidate for Executive Committee Member',
+  region:'LAC', gender:'Male', youth:true,
+  photo:'Gabriel_Stabile Lopes da Silva_Gabriel Stabile - Photo.jpeg',
+  bio:`My motivation to serve on the World YMCA Executive Committee is rooted in my belief in the YMCA's unique ability to empower young people and build inclusive communities worldwide. I believe governance means ensuring our global mission is impactful, accountable, and sustainable for future generations.
+
+My journey with the YMCA began as a child member in 2001 and, later, as a volunteer in 2008. Growing up on the outskirts of São Paulo, the YMCA gave me a sense of belonging, identity, and leadership opportunities. Today, I serve as the President of the Youth Committee of YMCA São Paulo, Board Member of YMCA Itaquera Branch, of the corporate Board of Sao Paulo YMCA, and Chair of the Marketing Committee. My grassroots efforts include leading youth empowerment, youth employment, and community development programs. I've represented YMCA Brazil at key events like YMCA 175th Anniversary (London, 2019), World YMCA Marketing Conference (Geneva, 2023), World YMCA Accelerator Summit (Mombasa, 2024), and other events in Germany and the USA. Key awards include Youth Member of the Year (YMCA São Paulo, 2015) and Spirit of the Y (YMCA of San Diego County, 2017).
+
+I am an Account Director at LinkedIn, the world's largest professional social network. I specialize in hiring and development solutions, strategic planning, and client success. Prior to joining LinkedIn, I worked for dunnhumby, a global leader in customer data science, providing valuable solutions in market insights and consultative leadership.
+
+I hold degrees in both Marketing and Public Policies from the University of São Paulo, completing my thesis on opportunities for sports practice for young people in underserved areas of São Paulo. During this period, I founded a social projects division within my student athletics association and later became its President. Leading a team of more than 100 people, I coordinated sports activities, community initiatives, and large-scale events, with focus on financial planning, organizational structure, and collective impact.
+
+My volunteer, professional, and academic experiences have strengthened my skills in governance and collaboration; competencies I am eager to bring to the World YMCA Executive Committee.
+
+The YMCA has profoundly shaped my life, and I am committed to ensuring that other young people, particularly those from communities like mine, can find a place to grow, lead, and belong. My goal is to combine my volunteer and professional expertise with my lifelong passion to amplify youth voices and strengthen our global impact.`
+},
+{
+  id:'exco-diego', section:'exco-lac',
+  name:'Diego Sandoval Landabur',
+  org:'National Council of YMCAs of Chile',
+  position:'Candidate for Executive Committee Member',
+  region:'LAC', gender:'Male', youth:true,
+  photo:'Diego _Sandoval_foto pasaporte.jpg',
+  bio:`My motivation to run for the Executive Committee of the World Alliance of YMCAs comes from a deep commitment to the Christian mission and to serving young people. I firmly believe that the YMCA is a transformative space where we, as young people, find opportunities to grow, discover our voice, and serve our communities. Through my involvement in the YMCA, I have learned that leadership is not about protagonism but about service, and I want to bring that conviction to the global level. My main goal is to ensure that the voice of Latin American youth is present in the strategic decisions of the World Alliance, acting as a bridge between our local realities and global challenges.
+
+I first joined the YMCA in 2017. In 2021, I entered the YGOR program, graduating in 2022, and since that same year, I have been part of the National Commission of Youth Leaders of Chile, a space that has allowed me to engage in dialogue with young people from all over the country, strengthen youth participation, and build proposals together. Since 2024, I have been a basic member of YMCA Valparaíso, Secretary of the Y's Men's Club YMCA Valparaíso, and Coordinator of the Mission Council of YMCA Valparaíso, where I have taken on responsibilities in organization, accompaniment, and coordination of activities. These roles have given me experience in youth governance, strategic planning, and working in committees that bring together diverse realities and perspectives.
+
+I bring skills in leadership, effective communication, soft skills, and teamwork, acquired through volunteering and the coordination of community activities. I have developed competencies in planning, event organization, group facilitation, and building consensus in diverse contexts. My formation in Christian spaces of mission and service has given me a strong orientation toward social justice, inclusion, and community care. I am convinced that these competencies will allow me to contribute meaningfully to the decisions of the Executive Committee, ensuring that Vision 2030 is translated into concrete and transformative actions in Latin America and around the world.
+
+The YMCA has profoundly shaped my life, not only as a place of encounter but also as a space that inspires me to serve and to live my faith in action. I have seen how this movement changes lives, especially for young people who find here hope and community. Representing Latin America on the Executive Committee would be for me both an honor and a responsibility, which I accept with humility and conviction, ready to serve and to learn in this process.`
+},
+
+// ─────────── EXCO – USA ───────────
+{
+  id:'exco-cici', section:'exco-usa',
+  name:'Cecilia Rojas',
+  org:'Y-USA',
+  position:'Candidate for Executive Committee Member',
+  region:'USA', gender:'Female', youth:false,
+  photo:'CiCi_Rojas_5-3-23 1.JPG',
+  bio:`I am honored to submit my nomination for continued service on the Executive Committee of the World Alliance of YMCAs. My lifelong journey with the YMCA began as a child in my neighborhood Y, where I first learned the fundamentals of volleyball and basketball. That early experience gave me a foundation of community, wellness, and belonging—values that have shaped my life and leadership. Over the years, the YMCA has been both a place of service and a source of strength, most profoundly during my battle with cancer, when I found encouragement and solidarity among survivors and fellow fighters within the Y community.
+
+For more than two decades, I have been privileged to serve the YMCA at every level of governance. Locally, I spent 12 years on the board of the YMCA of Greater Kansas City, including service as Chair. At the national level, I served nine years on the Board of the YMCA of the USA, culminating as Immediate Past Chair. Globally, I currently serve as Treasurer and Executive Committee member of the World YMCA. In addition, I was the first leader of diversity committees both locally and nationally, advancing the Y's commitment to equity and inclusion. These roles have given me firsthand experience in policy governance across organizations of significant size and complexity, including YMCA of the USA, which has an annual operating budget exceeding $1 billion and serves thousands of local associations across the country.
+
+Beyond governance, my professional background equips me with competencies valuable to the Executive Committee. As Co-Owner of Tico Productions/Tico Sports, a bilingual multimedia company, I bring expertise in media, communications, marketing, and community engagement. I also serve on multiple corporate and nonprofit boards, where I have overseen finance, audit, and governance committees. These experiences have sharpened my skills in fiscal management, strategic planning, and organizational leadership—skills directly aligned with the requirements of serving the World Alliance.
+
+My motivation to continue serving stems from a deep belief in the YMCA's transformative power. I have witnessed the Y's impact in local neighborhoods across the U.S. and in communities around the world. I want to help strengthen our global movement by ensuring sustainability, expanding diversity and inclusion, and equipping the next generation of leaders.
+
+The YMCA changed my life as a child, supported me in adulthood, and continues to inspire me to serve. It is my passion to give back by advancing our shared mission of empowering young people and building stronger, more inclusive communities worldwide.`
+},
+
+// ─────────── EXCO – CANADA ───────────
+{
+  id:'exco-mary', section:'exco-canada',
+  name:'Mary Kathryn Beck',
+  org:'Y-Canada',
+  position:'Candidate for Executive Committee Member',
+  region:'Canada', gender:'Female', youth:false,
+  photo:'Mary_Beck_Mary Beck Headshot.png',
+  bio:`My YMCA journey began with a need to find safe, affordable childcare. Once our family found the YMCA in Vancouver, we never worried about our child's safety. Our child thrived – and I felt compelled to give back.
+
+After several years spent fundraising for YMCA childcare, I joined the Board of the YMCA of Greater Vancouver (now YMCA BC), marking the start of my governance journey about 25 years ago. I was welcomed, respected and made to feel I belonged. Over time, I developed into a passionate governance leader committed to linking strong governance with organizational sustainability.
+
+I bring a legal perspective to the Board table, gained from being a member of the Law Society of British Columbia. My professional legal focus on securities regulation – primarily at an independent BC-based investment firm – also gave me financial and investment acumen. Additionally, I bring an ICD.D designation from the Institute of Corporate directors (ICD.D), a professional governance training program in Canada.
+
+My YMCA leadership has included serving as a board member, committee member, committee chair and ultimately as Board Chair of YMCA Greater Vancouver, YMCA Greater Vancouver Foundation and the YMCA Canada National Board. These roles have involved strategic planning, CEO succession, strategic asset development, and governance excellence. Above all, they have focused on building welcoming communities, unlocking people's potential, and ensuring access for all. Be it at the local, national or global level, the YMCA inspires. The YMCA changes lives and that is what creates an ongoing passion in me for the organization.
+
+Volunteering with the YMCA has been a gift. Today, this continues as a coach for YMCA Canada's Good Governance Project. Volunteering is truly a gift received; not given. The connection I feel – to the mission, people we serve, and those who work and volunteer – is profound. It is what motivates me to continue to be a YMCA volunteer and inspires me to contribute to World YMCA.
+
+I'm especially interested in supporting the development of World YMCA's next strategic framework. Having participated in the Vision 2030 process, I see this next step as vital to sustaining and advancing the movement globally. I bring decades of YMCA leadership, a collaborative spirit, and a willingness to mentor.
+
+It is an exciting time. Simply put, the world needs more YMCA.
+
+Thank you for considering my application.`
+},
+
+// ─────────── EXCO – MIDDLE EAST ───────────
+{
+  id:'exco-maurine', section:'exco-me',
+  name:'Maurine Kouba',
+  org:'East Jerusalem YMCA',
+  position:'Candidate for Executive Committee Member',
+  region:'Middle East', gender:'Female', youth:true,
+  photo:'Maurine _Kouba_Maurine Kouba pic 1.1.jpg',
+  bio:`Maurine Kouba is a young cultural enthusiast and currently serves as the Head of the Youth and Children Division within the Culture Development Department at the Municipality of Ramallah. She also served as the Executive Director of Yabous Cultural Centre in Jerusalem, one of Palestine's leading cultural institutions from 2023 until 2025. Maurine holds a Master's degree in Business Communication from the University of Siena in Italy and a Bachelor's degree in Finance, Banking and Business from Birzeit University. She has extensive experience in women's and youth-focused projects, both professionally and through her personal initiatives.
+
+Over the past decade, Maurine has been actively engaged in the cultural and artistic field, volunteering at numerous festivals and events with Yabous and other organizations. This long-term involvement has shaped her deep belief in the power of art and culture as tools for storytelling, community revival, and the preservation of identity and heritage.
+
+Beyond her professional work, Maurine is a committed youth leader and activist. She serves as an executive committee member at the World Council of YMCAs (2022 - 2026) representing the Middle East, and as a board member at the East Jerusalem YMCA. Her journey with the YMCA spans more than ten years of volunteer leadership, though she often says it began in early childhood, accompanying her family to local YMCA activities — forming a lifelong bond with the movement. She strongly believes in the potential of young leaders to shape the future and amplify the voices of their communities.`
+}
+];
+
+// ═══════════════════════════════════════════════════════════════
+// BIO RENDERER
+// ═══════════════════════════════════════════════════════════════
+function renderBio(rawBio) {
+  // Split on double newlines
+  const blocks = rawBio.trim().split(/\n{2,}/);
+  let html = '';
+  for (let i = 0; i < blocks.length; i++) {
+    const block = blocks[i].trim();
+    if (!block) continue;
+    // Check if it's a section header [...]
+    if (block.startsWith('[') && block.endsWith(']')) {
+      html += `<div class="bio-numbered">${block.slice(1,-1)}</div>`;
+      continue;
+    }
+    // Check if it's a list block (lines starting with -)
+    const lines = block.split('\n').map(l => l.trim()).filter(l => l);
+    const isListBlock = lines.every(l => l.startsWith('-') || l.startsWith('•'));
+    if (isListBlock && lines.length > 1) {
+      html += '<ul>' + lines.map(l => `<li>${l.replace(/^[-•]\s*/,'')}</li>`).join('') + '</ul>';
+      continue;
+    }
+    // Mixed block: some lines may be list items
+    if (lines.some(l => l.startsWith('-') || l.startsWith('•')) && lines.length > 1) {
+      let subHtml = '';
+      let inList = false;
+      for (const line of lines) {
+        if (line.startsWith('-') || line.startsWith('•')) {
+          if (!inList) { subHtml += '<ul>'; inList = true; }
+          subHtml += `<li>${line.replace(/^[-•]\s*/,'')}</li>`;
+        } else {
+          if (inList) { subHtml += '</ul>'; inList = false; }
+          subHtml += `<p>${line}</p>`;
+        }
+      }
+      if (inList) subHtml += '</ul>';
+      html += subHtml;
+      continue;
+    }
+    // Regular paragraph
+    html += `<p>${block.replace(/\n/g,' ')}</p>`;
+  }
+  return html;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// PAGE DEFINITIONS
+// ═══════════════════════════════════════════════════════════════
+const SECTIONS = [
+  { id:'cover', label:'Cover', group:'intro' },
+  { id:'intro', label:'Introduction', group:'intro' },
+  { id:'committee', label:'Elections Committee', group:'intro' },
+  { id:'summary', label:'All Candidates', group:'intro' },
+  { id:'sec-president', label:'President', group:'officers', sectionDiv:true },
+  { id:'president-lewis', label:'Christopher Lewis', group:'officers', region:'APAY' },
+  { id:'sec-deputy', label:'Deputy President', group:'officers', sectionDiv:true },
+  { id:'dp-bremner', label:'Sarah Bremner', group:'officers', region:'Europe' },
+  { id:'dp-osmundsen', label:'Emma Osmundsen-White', group:'officers', region:'Europe' },
+  { id:'dp-senghore', label:'Ronald Senghore', group:'officers', region:'Africa' },
+  { id:'sec-treasurer', label:'Treasurer', group:'officers', sectionDiv:true },
+  { id:'treasurer-skinner', label:'Laurie Lynn Skinner', group:'officers', region:'Canada' },
+  { id:'sec-africa', label:'Africa', group:'exco', sectionDiv:true },
+  { id:'exco-nganga', label:"Pius Kamau Ng'ang'a", group:'exco', region:'Africa' },
+  { id:'exco-nalisoa', label:'Nalisoa Andrianarivo', group:'exco', region:'Africa' },
+  { id:'sec-apay', label:'Asia Pacific', group:'exco', sectionDiv:true },
+  { id:'exco-lewis-apay', label:'Christopher Lewis', group:'exco', region:'APAY' },
+  { id:'exco-betsy', label:'Dr. Betsy Merilyn Williams', group:'exco', region:'APAY' },
+  { id:'exco-charis', label:'Charis Gabriel Lim', group:'exco', region:'APAY' },
+  { id:'exco-joshua', label:'Yau Chung Wan (Joshua)', group:'exco', region:'APAY' },
+  { id:'exco-czieloh', label:'Czieloh Jomea Villajin', group:'exco', region:'APAY' },
+  { id:'sec-europe', label:'Europe', group:'exco', sectionDiv:true },
+  { id:'exco-bremner-europe', label:'Sarah Bremner', group:'exco', region:'Europe' },
+  { id:'exco-lena', label:'Lena Revekka Schickhaus', group:'exco', region:'Europe' },
+  { id:'sec-lac', label:'Latin America & Caribbean', group:'exco', sectionDiv:true },
+  { id:'exco-gabriel', label:'Gabriel Stabile Lopes Da Silva', group:'exco', region:'LAC' },
+  { id:'exco-diego', label:'Diego Sandoval Landabur', group:'exco', region:'LAC' },
+  { id:'sec-usa', label:'Y-USA', group:'exco', sectionDiv:true },
+  { id:'exco-cici', label:'Cecilia Rojas', group:'exco', region:'USA' },
+  { id:'sec-canada', label:'Y-Canada', group:'exco', sectionDiv:true },
+  { id:'exco-mary', label:'Mary Kathryn Beck', group:'exco', region:'Canada' },
+  { id:'sec-me', label:'Middle East', group:'exco', sectionDiv:true },
+  { id:'exco-maurine', label:'Maurine Kouba', group:'exco', region:'Middle East' },
+  { id:'annexure', label:'Roles & Responsibilities', group:'annexure' },
+];
+
+// ═══════════════════════════════════════════════════════════════
+// SECTION DIVIDER DATA
+// ═══════════════════════════════════════════════════════════════
+const SECTION_DIVS = {
+  'sec-president': {
+    label:'Officers',
+    title:'Candidates for <em>President</em>',
+    desc:'One candidate has been nominated to lead the World YMCA Executive Committee for the 2026–2030 term.',
+    seats:1, candidates:1,
+    color:'#D51A3C'
+  },
+  'sec-deputy': {
+    label:'Officers',
+    title:'Candidates for <em>Deputy President</em>',
+    desc:'Three candidates from three regions are standing for the one Deputy President position.',
+    seats:1, candidates:3,
+    color:'#231F20'
+  },
+  'sec-treasurer': {
+    label:'Officers',
+    title:'Candidates for <em>Treasurer</em>',
+    desc:'One candidate has been nominated to serve as Treasurer of the World YMCA.',
+    seats:1, candidates:1,
+    color:'#D51A3C'
+  },
+  'sec-africa': {
+    label:'Executive Committee Members',
+    title:'<em>Africa</em> Alliance of YMCAs',
+    desc:'Two candidates nominated by national movements in Africa. Two seats available from the Africa region.',
+    seats:2, candidates:2,
+    color:'#C05000'
+  },
+  'sec-apay': {
+    label:'Executive Committee Members',
+    title:'Asia & Pacific Alliance of <em>YMCAs</em>',
+    desc:'Five candidates nominated by national movements across the Asia-Pacific region. Two seats available.',
+    seats:2, candidates:5,
+    color:'#1565C0'
+  },
+  'sec-europe': {
+    label:'Executive Committee Members',
+    title:'<em>European</em> Alliance of YMCAs',
+    desc:'Two candidates nominated by national movements in Europe. Two seats available from the Europe region.',
+    seats:2, candidates:2,
+    color:'#880E4F'
+  },
+  'sec-lac': {
+    label:'Executive Committee Members',
+    title:'Latin America & Caribbean <em>Alliance</em>',
+    desc:'Two candidates nominated by national movements in Latin America and the Caribbean. Two seats available.',
+    seats:2, candidates:2,
+    color:'#2E7D32'
+  },
+  'sec-usa': {
+    label:'Executive Committee Members',
+    title:'<em>Y-USA</em>',
+    desc:'One candidate nominated by Y-USA. One seat is allocated to the USA.',
+    seats:1, candidates:1,
+    color:'#4527A0'
+  },
+  'sec-canada': {
+    label:'Executive Committee Members',
+    title:'<em>Y-Canada</em>',
+    desc:'One candidate nominated by Y-Canada. One seat is allocated to Canada.',
+    seats:1, candidates:1,
+    color:'#006064'
+  },
+  'sec-me': {
+    label:'Executive Committee Members',
+    title:'<em>Middle East</em>',
+    desc:'One candidate nominated by the Middle East region. One seat is allocated to the Middle East.',
+    seats:1, candidates:1,
+    color:'#C05000'
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════
+// BUILD SIDEBAR
+// ═══════════════════════════════════════════════════════════════
+function buildSidebar() {
+  const nav = document.getElementById('sidebarNav');
+  const groups = [
+    { key:'intro', label:'Overview' },
+    { key:'officers', label:'Officers' },
+    { key:'exco', label:'ExCo Members' },
+    { key:'annexure', label:'Annexures' },
+  ];
+  groups.forEach(g => {
+    const items = SECTIONS.filter(s => s.group === g.key);
+    if (!items.length) return;
+    const labelEl = document.createElement('div');
+    labelEl.className = 'sb-group-label';
+    labelEl.textContent = g.label;
+    nav.appendChild(labelEl);
+    items.forEach(s => {
+      if (s.sectionDiv) return; // skip dividers in sidebar
+      const el = document.createElement('div');
+      el.className = 'nav-item';
+      el.dataset.id = s.id;
+      const dot = document.createElement('span');
+      dot.className = 'nav-dot';
+      el.appendChild(dot);
+      const txt = document.createElement('span');
+      txt.textContent = s.label;
+      el.appendChild(txt);
+      if (s.region) {
+        const badge = document.createElement('span');
+        badge.className = `nav-badge ${REGION_COLORS[s.region] || 'ctag-red'}`;
+        badge.textContent = s.region === 'Middle East' ? 'ME' :
+                            s.region === 'LAC' ? 'LAC' :
+                            s.region === 'Africa' ? 'AF' :
+                            s.region === 'Europe' ? 'EU' :
+                            s.region === 'Canada' ? 'CA' :
+                            s.region === 'USA' ? 'USA' : s.region;
+        badge.style.background = 'rgba(255,255,255,.1)';
+        badge.style.color = 'rgba(255,255,255,.5)';
+        el.appendChild(badge);
+      }
+      el.addEventListener('click', () => scrollToPage(s.id));
+      nav.appendChild(el);
+    });
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// BUILD PAGES
+// ═══════════════════════════════════════════════════════════════
+function buildPages() {
+  const container = document.getElementById('pages');
+  SECTIONS.forEach(s => {
+    let el;
+    if (s.id === 'cover') el = buildCover();
+    else if (s.id === 'intro') el = buildIntro();
+    else if (s.id === 'committee') el = buildCommittee();
+    else if (s.id === 'summary') el = buildSummary();
+    else if (s.id === 'annexure') el = buildAnnexure();
+    else if (s.sectionDiv) el = buildSectionDiv(s.id);
+    else el = buildCandidatePage(s.id);
+    if (el) {
+      el.dataset.pageId = s.id;
+      container.appendChild(el);
+    }
+  });
+}
+
+// ── COVER ──
+function buildCover() {
+  const d = document.createElement('div');
+  d.className = 'page cover';
+  d.innerHTML = `
+  <div class="cover-bg"></div>
+  <div class="cover-shape1"></div>
+  <div class="cover-shape2"></div>
+  <div class="cover-shape3"></div>
+  <div class="cover-inner">
+    <div class="cover-top">
+      <div class="cover-logo-block">
+        <div class="cover-logo-world">World Alliance of YMCAs</div>
+        <div class="cover-logo-ymca">YMCA</div>
+        <div class="cover-logo-sub">Empowering Young People</div>
+      </div>
+      <div class="cover-year-badge">
+        <div class="cover-year">2026</div>
+        <div class="cover-year-label">World Council</div>
+      </div>
+    </div>
+    <div class="cover-mid">
+      <div class="cover-title-block">
+        <div class="cover-eyebrow">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="white" stroke-width="1.5"/><path d="M6 3v3l2 2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+          21st World Council · Geneva
+        </div>
+        <div class="cover-h1">Nominations<br><em>Book</em></div>
+        <div class="cover-h2">Executive Committee Election Candidates<br>presented to National Movement delegates</div>
+        <div class="cover-pills">
+          <div class="cover-pill">
+            <div class="cover-pill-label">Event</div>
+            <div class="cover-pill-val">21st World Council</div>
+          </div>
+          <div class="cover-pill">
+            <div class="cover-pill-label">Dates</div>
+            <div class="cover-pill-val">19–24 July 2026</div>
+          </div>
+          <div class="cover-pill">
+            <div class="cover-pill-label">Location</div>
+            <div class="cover-pill-val">Geneva, Switzerland</div>
+          </div>
+          <div class="cover-pill">
+            <div class="cover-pill-label">Candidates</div>
+            <div class="cover-pill-val">17 Nominees</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cover-footer">
+      <div class="cover-footer-left">Chemin de Mouille-Galand 1 · 1214 Vernier · Geneva – Switzerland</div>
+      <div class="cover-footer-right">Published May 2026<br>World YMCA Elections Committee</div>
+    </div>
+  </div>`;
+  return d;
+}
+
+// ── INTRO ──
+function buildIntro() {
+  const d = document.createElement('div');
+  d.className = 'page text-page';
+  d.innerHTML = `
+  <div class="pg-header">
+    <div class="pg-header-accent" style="background:var(--red)"></div>
+    <div class="pg-header-content">
+      <div class="pg-header-tag">World YMCA · May 2026</div>
+      <div class="pg-header-title">About This Nominations Book</div>
+      <div class="pg-header-sub">A comprehensive guide to the 2026 Executive Committee election candidates</div>
+    </div>
+  </div>
+  <div class="text-body">
+    <p>This Nominations Book is a comprehensive list of all candidates who have been endorsed by their YMCA National Movement to stand as an Officer or Member of the World YMCA Executive Committee for the period 2026–2030.</p>
+    <p>It also provides details of the Responsibilities and Duties of the Officers and Members of the Committee, due for election at the 21st World Council, 19–24 July 2026.</p>
+    <div class="highlight-box">
+      <strong>Our YMCA vision</strong> is a world where every person lives in harmony with self, with society and with creation.
+    </div>
+    <div class="highlight-box yellow">
+      <strong>Our YMCA mission</strong> is to empower young people and communities worldwide to build a just, sustainable, equitable and inclusive world, where every person can thrive in body, mind and spirit.
+    </div>
+    <h3>Election Structure</h3>
+    <p>The Executive Committee shall consist of 21 to 23 Members comprising 3 Officers, 11 elected Members, 4 Area Presidents, 1 to 2 External Members (optional), Secretary General, Immediate Past President and Y's Men International Liaison.</p>
+    <p>The 11 elected members are distributed across geographic regions as follows:</p>
+    <ul>
+      <li><strong>Africa:</strong> 2 seats</li>
+      <li><strong>Asia Pacific (APAY):</strong> 2 seats</li>
+      <li><strong>Europe:</strong> 2 seats</li>
+      <li><strong>Latin America &amp; Caribbean:</strong> 2 seats</li>
+      <li><strong>Middle East:</strong> 1 seat</li>
+      <li><strong>USA:</strong> 1 seat</li>
+      <li><strong>Canada:</strong> 1 seat</li>
+    </ul>
+    <p>A minimum of four members must be 30 years of age or under when elected, and a maximum of seven members may be from any single gender.</p>
+    <h3>Constitutional Note</h3>
+    <p>The World YMCA Movement is currently consulting on possible constitutional amendments. These amendments, if approved at the 2026 World Council, would introduce a staggered election process from 2028 to reduce the risk of loss of knowledge of the organisation. If adopted, 50% of the members of the Executive Committee (with the exception of the officers) will be elected every two years. Candidates should take this potential change into account when deciding on their nomination.</p>
+  </div>`;
+  return d;
+}
+
+// ── ELECTIONS COMMITTEE ──
+function buildCommittee() {
+  const d = document.createElement('div');
+  d.className = 'page committee-page';
+  d.innerHTML = `
+  <div class="pg-header">
+    <div class="pg-header-accent" style="background:var(--orange)"></div>
+    <div class="pg-header-content">
+      <div class="pg-header-tag">World YMCA</div>
+      <div class="pg-header-title">Elections Committee</div>
+      <div class="pg-header-sub">Members overseeing the 2026 Executive Committee election process</div>
+    </div>
+  </div>
+  <div class="committee-grid">
+    <div class="cmt-card"><div class="cmt-role">Co-Chair</div><div class="cmt-name">Patricia Pelton</div><div class="cmt-country">Canada</div></div>
+    <div class="cmt-card"><div class="cmt-role">Co-Chair</div><div class="cmt-name">Peter Posner</div><div class="cmt-country">United Kingdom</div></div>
+    <div class="cmt-card"><div class="cmt-role">Member</div><div class="cmt-name">Babu Markus Gomes</div><div class="cmt-country">Bangladesh</div></div>
+    <div class="cmt-card"><div class="cmt-role">Member</div><div class="cmt-name">Eliza Vas *</div><div class="cmt-country">Romania</div></div>
+    <div class="cmt-card"><div class="cmt-role">Member</div><div class="cmt-name">Anaclara Rodrigues</div><div class="cmt-country">Uruguay</div></div>
+    <div class="cmt-card"><div class="cmt-role">Member</div><div class="cmt-name">Daniel Doiron</div><div class="cmt-country">Canada</div></div>
+    <div class="cmt-card"><div class="cmt-role">Member</div><div class="cmt-name">Alain Douglas Wandji Kamga</div><div class="cmt-country">Cameroon</div></div>
+    <div class="cmt-card"><div class="cmt-role">Member</div><div class="cmt-name">Raine McAngus *</div><div class="cmt-country">USA</div></div>
+    <div class="cmt-card"><div class="cmt-role">Ex Officio</div><div class="cmt-name">Soheila Hayek</div><div class="cmt-country">Lebanon</div></div>
+    <div class="cmt-card"><div class="cmt-role">Ex Officio</div><div class="cmt-name">Carlos Sanvee</div><div class="cmt-country">Togo</div></div>
+    <div class="cmt-card"><div class="cmt-role">WAY Related Secretary</div><div class="cmt-name">Duncan Chowdhury</div><div class="cmt-country">USA</div></div>
+  </div>
+  <div style="padding:0 28px 20px;font-size:11px;color:#999;font-style:italic">
+    * Eliza Vas from Romania served as a member until March 2025 and Raine McAngus from USA served as a member until December 2025.
+  </div>`;
+  return d;
+}
+
+// ── SUMMARY TABLE ──
+function buildSummary() {
+  const d = document.createElement('div');
+  d.className = 'page summary-page';
+  const rows = [
+    ['Christopher Lewis','President','Australia','APAY','Male','No'],
+    ['Sarah Bremner','Deputy President','Scotland','Europe','Female','No'],
+    ['Emma Osmundsen-White','Deputy President','Eng & Wales','Europe','Female','No'],
+    ['Ronald Senghore','Deputy President','Gambia','Africa','Male','No'],
+    ['Laurie Lynn Skinner','Treasurer','Canada','Canada','Female','No'],
+    ["Pius Kamau Ng'ang'a",'ExCo Member','Kenya','Africa','Male','No'],
+    ['Nalisoa Andrianarivo','ExCo Member','Madagascar','Africa','Female','Yes'],
+    ['Christopher Lewis','ExCo Member','Australia','APAY','Male','No'],
+    ['Dr. Betsy Merilyn Williams','ExCo Member','India','APAY','Female','No'],
+    ['Charis Gabriel Lim','ExCo Member','Singapore','APAY','Male','No'],
+    ['Yau Chung Wan (Joshua)','ExCo Member','Hong Kong','APAY','Male','No'],
+    ['Czieloh Jomea Villajin','ExCo Member','Philippines','APAY','Female','Yes'],
+    ['Sarah Bremner','ExCo Member','Scotland','Europe','Female','No'],
+    ['Lena Revekka Schickhaus','ExCo Member','Germany','Europe','Female','Yes'],
+    ['Gabriel Stabile Lopes Da Silva','ExCo Member','Brazil','LAC','Male','Yes'],
+    ['Diego Sandoval Landabur','ExCo Member','Chile','LAC','Male','Yes'],
+    ['Cecilia Rojas','ExCo Member','USA','USA','Female','No'],
+    ['Mary Kathryn Beck','ExCo Member','Canada','Canada','Female','No'],
+    ['Maurine Kouba','ExCo Member','East Jerusalem','Middle East','Female','Yes'],
+  ];
+  const rpMap = {'APAY':'ras','Africa':'ra','Europe':'re','LAC':'rl','USA':'ru','Canada':'rc','Middle East':'rm'};
+  let tableHtml = rows.map(r => `
+    <tr>
+      <td><span class="stbl-name">${r[0]}</span></td>
+      <td><span class="stbl-pos">${r[1]}</span></td>
+      <td>${r[2]}</td>
+      <td><span class="rpill ${rpMap[r[3]]||'ra'}">${r[3]}</span></td>
+      <td>${r[4]}</td>
+      <td>${r[5]==='Yes'?'<span class="youth-yes">Yes ≤30</span>':r[5]}</td>
+    </tr>`).join('');
+  d.innerHTML = `
+  <div class="pg-header">
+    <div class="pg-header-accent" style="background:var(--yellow)"></div>
+    <div class="pg-header-content">
+      <div class="pg-header-tag">Summary</div>
+      <div class="pg-header-title">All Candidates at a Glance</div>
+      <div class="pg-header-sub">19 candidacies across all positions and regions</div>
+    </div>
+  </div>
+  <div class="summary-body">
+    <table class="stbl">
+      <thead><tr>
+        <th>Name</th><th>Position</th><th>National Movement</th><th>Area</th><th>Gender</th><th>Under 30</th>
+      </tr></thead>
+      <tbody>${tableHtml}</tbody>
+    </table>
+  </div>`;
+  return d;
+}
+
+// ── SECTION DIVIDER ──
+function buildSectionDiv(id) {
+  const data = SECTION_DIVS[id];
+  if (!data) return null;
+  const d = document.createElement('div');
+  d.className = 'page sec-div';
+  d.style.background = data.color;
+  d.innerHTML = `
+  <div class="sec-div-circle1"></div>
+  <div class="sec-div-circle2"></div>
+  <div class="sec-div-inner">
+    <div class="sec-div-label">${data.label}</div>
+    <div class="sec-div-title">${data.title}</div>
+    <div class="sec-div-desc">${data.desc}</div>
+    <div class="sec-div-seats">
+      <div class="seat-box"><span class="seat-num">${data.candidates}</span><span class="seat-label">Candidate${data.candidates>1?'s':''}</span></div>
+      <div class="seat-box"><span class="seat-num">${data.seats}</span><span class="seat-label">Seat${data.seats>1?'s':''} Available</span></div>
+    </div>
+  </div>`;
+  return d;
+}
+
+// ── CANDIDATE PAGE ──
+function buildCandidatePage(id) {
+  const c = CANDIDATES.find(x => x.id === id);
+  if (!c) return null;
+  const d = document.createElement('div');
+  d.className = 'page cand-page';
+  const initials = c.name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+  const rColor = REGION_COLORS[c.region] || 'ctag-red';
+  const tags = [
+    `<span class="ctag ${rColor}">${c.region}</span>`,
+    `<span class="ctag ctag-orange">${c.gender}</span>`,
+    c.youth ? `<span class="ctag ctag-yellow">Under 30</span>` : '',
+  ].filter(Boolean).join('');
+
+  d.innerHTML = `
+  <div class="cand-top">
+    <div class="cand-photo">
+      <img src="${c.photo}" alt="${c.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cand-photo-init" style="display:none">${initials}</div>
+    </div>
+    <div class="cand-info">
+      <div>
+        <div class="cand-pos-tag">${c.position}</div>
+        <div class="cand-name">${c.name}</div>
+        <div class="cand-org">${c.org}</div>
+        <div class="cand-tags">${tags}</div>
+      </div>
+    </div>
+  </div>
+  <div class="cand-bio">
+    <div class="bio-label">Biography</div>
+    <div class="bio-body">${renderBio(c.bio)}</div>
+    <span class="video-link">▶&nbsp; Video Statement (link to be provided)</span>
+  </div>`;
+  return d;
+}
+
+// ── ANNEXURE ──
+function buildAnnexure() {
+  const d = document.createElement('div');
+  d.className = 'page annexure-page';
+  d.innerHTML = `
+  <div class="pg-header">
+    <div class="pg-header-accent" style="background:var(--black)"></div>
+    <div class="pg-header-content">
+      <div class="pg-header-tag">Annexures</div>
+      <div class="pg-header-title">Roles & Responsibilities of the Executive Committee</div>
+      <div class="pg-header-sub">An overview for candidates and national movement delegates</div>
+    </div>
+  </div>
+  <div class="text-body" style="max-height:calc(100vh - 100px);overflow-y:auto">
+    <p>This guide provides an overview of the roles and responsibilities of the Executive Committee, including the President, Deputy President, Treasurer, and all Executive Committee members. As leaders within the movement, they play a crucial role in governance, representation, and strategic oversight. We encourage the National Movements to review this document carefully and consider nominating strong candidates who meet the qualifications for these key positions.</p>
+
+    <h3>General Responsibilities of the Executive Committee</h3>
+    <h4>Set Organisational Direction</h4>
+    <ul>
+      <li>Determine, monitor and advocate for the Mission and Purpose of World YMCA.</li>
+      <li>Actively participate in the overall World YMCA strategic planning effort and assist to monitor the implementation progress via annual business plans.</li>
+      <li>Carry out any policy and specific instructions of the World Council.</li>
+      <li>Ensure that the organisation has the leadership to achieve the Strategic Plan objectives.</li>
+      <li>Select the Secretary General as needed.</li>
+    </ul>
+    <h4>Ensure Necessary Organisational Resources</h4>
+    <ul>
+      <li>Protect the organisation's assets and provide proper financial adequacy, oversight and controls.</li>
+      <li>Determine and oversee that purposeful fundraising programs are in place.</li>
+      <li>Identify potential philanthropic prospects and partners.</li>
+      <li>Continually improve the Executive Committee's governance knowledge.</li>
+      <li>Enhance the organisation's public standing by acting as a spokesperson when required.</li>
+    </ul>
+    <h4>Provide Organisational Oversight</h4>
+    <ul>
+      <li>Ensure legal, ethical and cultural integrity through organisational policies and compliance programs.</li>
+      <li>Articulate, safeguard, model, and promote YMCA organisational values.</li>
+      <li>Support the Secretary General by providing important and relevant moral and professional input.</li>
+      <li>Annually evaluate the Secretary General's performance based on mutually agreed objectives.</li>
+    </ul>
+
+    <h3>Skills Required – All Members</h3>
+    <ul>
+      <li>Governance Acumen.</li>
+      <li>Experience in Committee and/or Governance work, ideally at an international level.</li>
+      <li>Willingness to be a continuous learner to expand upon governance knowledge.</li>
+      <li>Professional background in relevant areas such as marketing, branding, accounting, resource mobilisation, law, AI, Information Technology, engineering, healthcare and wellness, childcare, and youth development.</li>
+      <li>Possess basic working knowledge of both written and spoken English.</li>
+      <li>Adhere to Christian values and commitment of the YMCA.</li>
+    </ul>
+
+    <h3>The President – Key Responsibilities</h3>
+    <p>The President is the leader of the Executive Committee of the World YMCA, responsible for ensuring the integrity and effectiveness of governance, presiding at meetings, representing the Executive Committee within the Movement, and maintaining effective relationships with the Secretary General and stakeholders.</p>
+    <p><strong>Skills required:</strong> Proven leadership skills; demonstrated governance experience at international level; outstanding record of achievement; good strategic and facilitation skills; ability to act impartially; understanding of DEI principles; effective communicator; political acuity.</p>
+
+    <h3>The Deputy President – Key Responsibilities</h3>
+    <p>The Deputy President supports and carries out assignments and duties as requested by the President with particular attention to the organisation's most important strategies. They serve as a member of the JR Mott Foundation and Personnel Committee, and act as a substitute for the President when necessary.</p>
+    <p><strong>Skills required:</strong> Demonstrated leadership and strategic skills; governance and board-level experience at international level; effective communicator and collaborator; committed to the World YMCA mission and vision.</p>
+
+    <h3>The Treasurer – Key Responsibilities</h3>
+    <p>The Treasurer monitors financial policies and procedures, manages the Executive Committee's review of financial responsibilities, serves as Chair of the Finance Committee, and is the lead board member on assuring the financial security of the organisation.</p>
+    <p><strong>Skills required:</strong> Experience of financial accounting, finance and audit for non-profit organisations; understanding of Swiss legal and regulatory requirements; general investment management knowledge; integrity and trustworthiness; ability to analyse financial data; effective collaborator with strong communication skills.</p>
+
+    <h3>Contact</h3>
+    <p>World YMCA<br>Chemin de Mouille-Galand 1<br>1214 Vernier, Geneva – Switzerland<br>www.ymca.int</p>
+  </div>`;
+  return d;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════════════════════
+let currentIdx = 0;
+let allPages = [];
+
+function getPageIds() {
+  return SECTIONS.map(s => s.id);
+}
+
+function scrollToPage(id) {
+  const el = document.querySelector(`[data-page-id="${id}"]`);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+
+function updateNav(idx) {
+  currentIdx = idx;
+  const total = allPages.length;
+  const fill = ((idx / Math.max(total - 1, 1)) * 100).toFixed(1);
+  document.getElementById('progressFill').style.width = fill + '%';
+  document.getElementById('pgCounter').textContent = `${idx + 1} / ${total}`;
+  document.getElementById('btnPrev').disabled = idx === 0;
+  document.getElementById('btnNext').disabled = idx === total - 1;
+  // Update sidebar active state
+  const pageId = allPages[idx]?.dataset?.pageId;
+  document.querySelectorAll('.nav-item').forEach(el => {
+    el.classList.toggle('active', el.dataset.id === pageId);
+  });
+  // Scroll active nav item into view
+  const activeNav = document.querySelector(`.nav-item[data-id="${pageId}"]`);
+  if (activeNav) activeNav.scrollIntoView({ block: 'nearest' });
+}
+
+function init() {
+  buildSidebar();
+  buildPages();
+  allPages = Array.from(document.querySelectorAll('#pages .page'));
+  const pagesEl = document.getElementById('pages');
+
+  // Intersection observer for scroll snap
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.intersectionRatio > 0.5) {
+        const idx = allPages.indexOf(e.target);
+        if (idx !== -1) updateNav(idx);
+      }
+    });
+  }, { root: pagesEl, threshold: 0.5 });
+  allPages.forEach(p => observer.observe(p));
+
+  // Arrow buttons
+  document.getElementById('btnPrev').addEventListener('click', () => {
+    if (currentIdx > 0) allPages[currentIdx - 1].scrollIntoView({ behavior: 'smooth' });
+  });
+  document.getElementById('btnNext').addEventListener('click', () => {
+    if (currentIdx < allPages.length - 1) allPages[currentIdx + 1].scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      if (currentIdx < allPages.length - 1) allPages[currentIdx + 1].scrollIntoView({ behavior: 'smooth' });
+    } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      if (currentIdx > 0) allPages[currentIdx - 1].scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  updateNav(0);
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
